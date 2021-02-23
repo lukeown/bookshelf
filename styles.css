@@ -1,0 +1,11 @@
+body * {
+    margin: auto;
+    display: block;
+}
+body {
+    width: 60%;
+    margin: auto;
+}
+#card {
+    text-align: center;
+}
