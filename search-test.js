@@ -6,26 +6,30 @@ if (userInput != null) {
 
 const book = '';
 const books = [];
+const bookList = [books];
+const bookResult = '';
+const read = true;
 async function fetchBooks() {
-    const response = await fetch(`http://openlibrary.org/search.json?q=${userInput}`);
+    const response = await fetch(`http://openlibrary.org/search.json?title=${userInput}`);
     let book = await response.json();
-    const bookResult = book.docs[0]
-    console.dir(bookResult.title)
-    console.log(book.docs[0])
-    console.log(book.docs[0].title)
+    console.log(book)
+    let bookResult = book.docs[0]
+    const author = bookResult.author_name[0]
+    
     //need to figure out how to put the data from this book result into an array
-    books.push([bookResult.title], bookResult.author_name)
+    books.push({title: bookResult.title, author: author, isbn: bookResult.isbn[0], date: bookResult.first_publish_year})
     // generateArray(bookResult.title)
     console.log(books)
+    generateCard(books)
 }
 
-// function generateArray() {
-//     for ( let i = 0; i < book; i++) {
-//         // const book = { title: [title], author: [author] };
-//         books.push(bookResult)
-//     }
-//     console.log(books)
-// }
+
+function generateCard(bookList) { //generateCard takes the books array and throws the information into the 'card' div
+    console.log(bookList)
+  for (var i = 0; i < bookList.length; i++) {
+    document.getElementById('card').innerHTML += `${bookList[i].title}, ${bookList[i].author}, ${bookList[i].date} -- ISBN: ${bookList[i].isbn}`
+} 
+}
 
 
 
