@@ -4,16 +4,29 @@ if (userInput != null) {
     fetchBooks(userInput);
 }
 
-
+const book = '';
+const books = [];
 async function fetchBooks() {
     const response = await fetch(`http://openlibrary.org/search.json?q=${userInput}`);
-    const books = await response.json();
-    console.dir(books.docs[0])
-
+    let book = await response.json();
+    const bookResult = book.docs[0]
+    console.dir(bookResult.title)
+    console.log(book.docs[0])
+    console.log(book.docs[0].title)
+    //need to figure out how to put the data from this book result into an array
+    books.push([bookResult.title], bookResult.author_name)
+    // generateArray(bookResult.title)
+    console.log(books)
 }
-fetchBooks().then(books => {
-    books;
-})
+
+// function generateArray() {
+//     for ( let i = 0; i < book; i++) {
+//         // const book = { title: [title], author: [author] };
+//         books.push(bookResult)
+//     }
+//     console.log(books)
+// }
+
 
 
 
