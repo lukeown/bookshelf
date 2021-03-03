@@ -31,7 +31,8 @@ function generateCard(bookList) { //generateCard takes the books array and throw
 } 
 }
 
-
+// To make this show more than one result, I think I just need to loop over the results for the first 5, then display them the same way that I have been
+// The issue comes with the fetch function - bookResult only collects the data from the 0th index of book.docs
 
 
 
