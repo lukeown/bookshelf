@@ -18,13 +18,30 @@
 
 async function searchBooks() {
     event.preventDefault()
+    let bookResult = [] // clears out bookResults on every function call
+    document.getElementById('card').innerHTML = '' //clears out the card div for every search
+
     let userInput = document.getElementById('input').value
     const response =  await fetch(`http://openlibrary.org/search.json?q=${userInput}`)
+
     let book = await response.json()
 
-    let bookResult = []
+    //BOOK COVER API REQUEST
+    //WORKS RIGHT NOW BUT A LOT OF BOOKS DON'T HAVE COVERS
+    //loop over?
+    //need to check if the book has a cover file, if not display a placeholder. If it does, show the cover.
+
+    let bookCoverRequest = await (fetch(`http://covers.openlibrary.org/b/isbn/${book.docs[3].isbn[0]}-M.jpg`)) 
+    console.log(bookCoverRequest.url)
+    
+    for (i = 0; i < 5; i++) {
+        console.log(bookCoverRequest.url)
+    }
+
+    let bookCover = bookCoverRequest.url
+    console.dir(bookCover)
     for (let i = 0; i < 5; i++) { // pushes the first 5 search results to the bookResult array
-        bookResult.push({title: book.docs[i].title, author: book.docs[i].author_name, date: book.docs[i].first_publish_year, isbn: book.docs[i].isbn[0]})
+        bookResult.push({cover: bookCover, title: book.docs[i].title, author: book.docs[i].author_name, date: book.docs[i].first_publish_year, isbn: book.docs[i].isbn[0]})
     }
 
     console.log(bookResult)
@@ -32,8 +49,11 @@ async function searchBooks() {
 
 }
 
-function generateCard(bookList) { //generateCard takes the books array and throws the information into the 'card' div
+//generateCard takes the books array and throws the information into the 'card' div
+//also creates an img element within the 'card' div, using the url stored bookResult.cover, which is then passed into the generateCard function as bookList.cover
+
+function generateCard(bookList) { 
   for (let i = 0; i < bookList.length; i++) {
-    document.getElementById('card').innerHTML += `${bookList[i].title}, ${bookList[i].author}, ${bookList[i].date} -- ISBN: ${bookList[i].isbn}<br>`
+    document.getElementById('card').innerHTML += `<img src='${bookList[i].cover}' /> ${bookList[i].title}, ${bookList[i].author}, ${bookList[i].date} -- ISBN: ${bookList[i].isbn}<br>`
 } 
 }
