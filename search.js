@@ -25,7 +25,7 @@ async function searchBooks() {
 
     document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput}`
 
-    const response =  await fetch(`http://openlibrary.org/search.json?q=${userInput}`)
+    const response =  await fetch(`https://openlibrary.org/search.json?q=${userInput}`)
 
     let book = await response.json()
 
@@ -34,7 +34,7 @@ async function searchBooks() {
     //loop over?
     //need to check if the book has a cover file, if not display a placeholder. If it does, show the cover.
 
-    let bookCoverRequest = await (fetch(`http://covers.openlibrary.org/b/isbn/${book.docs[3].isbn[0]}-M.jpg`)) 
+    let bookCoverRequest = await (fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[3].isbn[0]}-M.jpg`)) 
     console.log(bookCoverRequest.url)
     
     for (i = 0; i < book.length; i++) {
@@ -44,7 +44,7 @@ async function searchBooks() {
     let bookCover = bookCoverRequest.url
     console.dir(bookCover)
     console.log(book.numFound)
-    for (let i = 0; i <= 5; i++) { // pushes the first 5 search results to the bookResult array
+    for (let i = 0; i <= 3; i++) { // pushes the first 5 search results to the bookResult array
         bookResult.push({cover: bookCover, title: book.docs[i].title, author: book.docs[i].author_name, date: book.docs[i].first_publish_year, isbn: book.docs[i].isbn[0]})
     }
     
