@@ -1,7 +1,19 @@
+// ---== TO DO ==---
+//
+// [] USER AUTHENTICATION VIA FIREBASE
+// [] PERSONAL BOOKSHELVES
+// [] PERSONAL READING STATS
+// [] ABOUT PAGE
+// [] IMAGE PROBLEM (PLACEHOLDER)
+// [] SPEED UP XHR REQUEST
+
+
+
 // App needs to let users:
 // - search books
 // - view book results returned from the search
 // - add books to their own bookshelf -- figure out how to return books first
+// ---- books will be saved to personal bookshelves (firebase users)
 
 // Search 
 // - user submits input form
@@ -23,12 +35,13 @@ async function searchBooks() {
 
     let userInput = document.getElementById('input').value
 
-    document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput}`
+    document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput}. <br> If response takes more than 5 seconds, please see about page for help.`
 
     const response =  await fetch(`https://openlibrary.org/search.json?q=${userInput}`)
 
     let book = await response.json()
 
+    console.log(book)
     //BOOK COVER API REQUEST
     //WORKS RIGHT NOW BUT A LOT OF BOOKS DON'T HAVE COVERS
     //loop over?
@@ -55,18 +68,8 @@ async function searchBooks() {
 
 }
 
-//generateCard takes the books array and throws the information into the 'card' div
+//generateCard takes the books array and throws the information to render into the 'card' div
 //also creates an img element within the 'card' div, using the url stored bookResult.cover, which is then passed into the generateCard function as bookList.cover
-
-
-
-
-
-
-
-
-
-
 
 function generateCard(bookList) { 
   for (let i = 0; i < bookList.length; i++) { 
@@ -94,3 +97,8 @@ function generateCard(bookList) {
    
 } 
 }
+
+//current issues with site
+//some books have dates that aren't eligble (not 4 digits) - instead of relying on first_publish_year, find the lowest eligible value in the publish_year array
+//some books don't have book cover - fix by setting placeholder image and using that if there is no eligible image
+//
