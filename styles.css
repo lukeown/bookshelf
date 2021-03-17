@@ -1,3 +1,6 @@
+* {
+    background-color: #AFBDAE;
+}
 body * {
     margin: auto;
     display: block;
@@ -7,5 +10,38 @@ body {
     margin: auto;
 }
 #card {
+    color: white;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    font-size: 1.5vw;
+}
+.input {
+    width: 30%;
+    color: #686868;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 2vw;
+    background-color: white;
+    margin-top: 5vw;
+    padding: 10px;
+    text-align: center;
+}
+input:-webkit-autofill {
+    color: #686868;
+    background-color: white;
+}
+
+#button {
+    width: 10%;
+    border: 2px solid #EF9F43;
+    border-radius: 5px;
+    font-size: 1vw;
+    color: white;
+    background-color: #EF9F43;
+    padding: 8px;
+}
+#button:hover {
+    background-color: #E18114;
+    border: 2px solid #E18114;
 }
