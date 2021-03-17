@@ -1,7 +1,9 @@
 * {
-    background-color: #AFBDAE;
+    background-color: #97C3B9;
+    font-family: 'Quicksand'
 }
 body * {
+    
     margin: auto;
     display: block;
 }
@@ -10,18 +12,14 @@ body {
     margin: auto;
 }
 #card {
-    color: white;
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 5px;
-    font-size: 1.5vw;
+    padding-top: 2vw;
 }
 .input {
     width: 30%;
     color: #686868;
     border: 2px solid white;
     border-radius: 8px;
-    font-size: 2vw;
+    font-size: 1.7vw;
     background-color: white;
     margin-top: 5vw;
     padding: 10px;
@@ -44,4 +42,21 @@ input:-webkit-autofill {
 #button:hover {
     background-color: #E18114;
     border: 2px solid #E18114;
+}
+h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2vw;
+    color: white;
+}
+p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1vw;
+    color: white;
+}
+#card-image {
+    margin: auto;
+    padding: 20px;
+}
+#searchConfirm {
+    text-align: center;
 }
