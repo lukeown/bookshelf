@@ -9,7 +9,6 @@ const firebaseConfig = {
     appId: "1:936112938208:web:078603093fb8e1eb0fc485"
 };
 firebase.initializeApp(firebaseConfig);
-const bookshelfDatabase = firebase.database().ref();
 
 //Register User
 function registerUser() {
