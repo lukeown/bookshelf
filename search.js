@@ -1,11 +1,11 @@
 // ---== TO DO ==---
 //
-// [] USER AUTHENTICATION VIA FIREBASE
+// [DONE] USER AUTHENTICATION VIA FIREBASE
 // [] PERSONAL BOOKSHELVES
 // [] PERSONAL READING STATS
 // [] ABOUT PAGE
 // [] IMAGE PROBLEM (PLACEHOLDER)
-// [] SPEED UP XHR REQUEST
+// [] SPEED UP XHR REQUEST?
 
 
 
@@ -28,6 +28,8 @@
 // The searchBooks function call just starts the process of getting book results. Don't define any parameters or arguments in it
 // I was getting a lot of 'response.json() is not a function' errors and I don't know what I did to fix it
 
+
+
 async function searchBooks() {
     event.preventDefault()
     
@@ -47,7 +49,7 @@ async function searchBooks() {
     //loop over?
     //need to check if the book has a cover file, if not display a placeholder. If it does, show the cover.
 
-    let bookCoverRequest = await (fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[3].isbn[0]}-M.jpg`)) 
+    let bookCoverRequest = await (fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[4].isbn[0]}-M.jpg`)) 
     console.log(bookCoverRequest.url)
     
     for (i = 0; i < book.length; i++) {
@@ -77,7 +79,7 @@ function generateCard(bookList) {
     document.getElementById('card').innerHTML += // fill in card structure and content
         `
             <div class="card mb-3" id="card-shell" style="max-width: 600px;">
-                <div class="row g-0">
+                <div class="row g-0" id="card-item">
                     <div class="col-md-4" id="card-image">
                         <img src='${bookList[i].cover}' />
                     </div>
@@ -101,4 +103,3 @@ function generateCard(bookList) {
 //current issues with site
 //some books have dates that aren't eligble (not 4 digits) - instead of relying on first_publish_year, find the lowest eligible value in the publish_year array
 //some books don't have book cover - fix by setting placeholder image and using that if there is no eligible image
-//
