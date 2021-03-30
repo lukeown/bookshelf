@@ -31,7 +31,7 @@ async function searchBooks() {
     
     let bookResult = [] // clears out bookResults on every function call
     let userInput = document.getElementById('input').value;
-    document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput}. <br> Books will take a few seconds to load (uses third party API) <br> If response takes more than 5 seconds, please refresh and retry search.`
+    document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput} <br> Books will take a few seconds to load (uses third party API) <br> If response takes more than 5 seconds, please refresh and retry search.`
     const response =  await fetch(`https://openlibrary.org/search.json?title=${userInput}`)
     let book = await response.json()
     console.log(book)
@@ -43,7 +43,7 @@ async function searchBooks() {
     let bookCoverRequest = []
     let bookCover= []
     for (let i=0; i<5; i++) {
-        bookCoverRequest = await fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[i].isbn[0]}-M.jpg`);
+        bookCoverRequest = await fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[i].isbn[0]}-M.jpg`)
         bookCover.push(bookCoverRequest.url)
     }
 
@@ -67,7 +67,7 @@ function generateCard(bookList) {
             <div class="card mb-3" id="card-shell" style="max-width: 600px;">
                 <div class="row g-0" id="card-item">
                     <div class="col-md-4" id="card-image">
-                        <img src='${bookList[i].cover}' onload='getImageSize(${i})'/>
+                        <img src='${bookList[i].cover}' id='${i}' class='bookCover' onload='getImageSize(${i})'/>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body" id="card-body">
@@ -82,11 +82,21 @@ function generateCard(bookList) {
             </div>    `
     }
 }
-
+let badImage
 function getImageSize(index) { // returns image height
-    console.log(document.getElementsByTagName('img')[index].height)
+    imageHeight = document.getElementsByTagName('img')[index].height
+    if (imageHeight <= 1) {
+        console.log(`bad image at ${index}`)
+        function changeImage() {
+            badImage = document.getElementById(index)
+            console.log(badImage.src)
+            badImage.src = defaultCover
+        }
+        changeImage(index)
+    }
     return document.getElementsByTagName('img')[index].height
 }
+
 
 //current issues with site
 //some books have dates that aren't eligble (not 4 digits) - instead of relying on first_publish_year, find the lowest eligible value in the publish_year array

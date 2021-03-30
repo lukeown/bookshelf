@@ -15,7 +15,7 @@ body {
     padding-top: 2vw;
 }
 .input {
-    width: 30%;
+    width: 40%;
     color: #686868;
     border: 2px solid white;
     border-radius: 8px;
@@ -31,10 +31,10 @@ input:-webkit-autofill {
 }
 
 #button {
-    width: 10%;
+    width: 20%;
     border: 2px solid #EF9F43;
     border-radius: 5px;
-    font-size: 1vw;
+    font-size: 1.3vw;
     color: white;
     background-color: #EF9F43;
     padding: 8px;
@@ -57,8 +57,12 @@ p {
     margin: auto;
     padding: 20px;
 }
+
 #searchConfirm {
     text-align: center;
+}
+.bookCover {
+    max-height: 200px;
 }
 
 /* ----== MEDIA QUERIES ==---- */
