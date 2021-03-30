@@ -60,3 +60,30 @@ p {
 #searchConfirm {
     text-align: center;
 }
+
+/* ----== MEDIA QUERIES ==---- */
+
+@media screen and (orientation: portrait) {
+    body {
+        width: 100%;
+    }
+    .input {
+        width: 90%;
+        font-size: 6vw;
+        padding: 3vw;
+        margin-bottom: 3vw;
+    }
+    #button {
+        width: 90%;
+        font-size: 5vw;
+    }
+    h5 {
+        font-size: 5vw;
+    }
+    #searchConfirm {
+        font-size: 4vw;
+    }
+    p {
+        font-size: 3.5vw;
+    }
+}

@@ -43,7 +43,7 @@ async function searchBooks() {
     let bookCoverRequest = []
     let bookCover= []
     for (let i=0; i<5; i++) {
-        bookCoverRequest = await fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[i].isbn[1]}-M.jpg`);
+        bookCoverRequest = await fetch(`https://covers.openlibrary.org/b/isbn/${book.docs[i].isbn[0]}-M.jpg`);
         bookCover.push(bookCoverRequest.url)
     }
 
