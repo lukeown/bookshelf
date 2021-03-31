@@ -28,8 +28,9 @@
 
 async function searchBooks() {
     event.preventDefault()
+    clear()
     
-    let bookResult = [] // clears out bookResults on every function call
+    let bookResult = [] 
     let userInput = document.getElementById('input').value;
     document.getElementById('searchConfirm').innerHTML = `Searching for: ${userInput} <br> Books will take a few seconds to load (uses third party API) <br> If response takes more than 5 seconds, please refresh and retry search.`
     const response =  await fetch(`https://openlibrary.org/search.json?title=${userInput}`)
@@ -95,6 +96,13 @@ function getImageSize(index) { // returns image height
         changeImage(index)
     }
     return document.getElementsByTagName('img')[index].height
+}
+function clear() {
+    let book
+    let bookResult = []
+    let bookCover = []
+    let bookCoverRequest = []
+    document.getElementById('card').innerHTML = ''
 }
 
 
