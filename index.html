@@ -11,12 +11,17 @@
 </head>
 
 <body>
-    
-
+    <nav class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link" href="index.html">Search</a>
+        <a class="nav-item nav-link" href="#">My Shelf</a>
+        <a class="nav-item nav-link" href="about.html">About</a>
+        <a class="nav-item nav-link" id="sign-in" href="sign-in.html">Sign In</a>
+    </nav>
+    <h1>Search Books</h1>
     <form autoComplete='off' onSubmit="searchBooks()" id="form">
-        <input class="input" type="text" id="input" name="book" placeholder="Lord of the Rings">
+        <input class="input" type="text" id="input" name="book" placeholder="Enter a book title">
         <br>
-        <input type="submit" id="button" value="Search books">
+        <input type="submit" id="button" value="Search">
     </form>
     <div id="searchConfirm"></div>
     <div id="card"></div>

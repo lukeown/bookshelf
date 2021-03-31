@@ -22,8 +22,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-
-let user
+let userEmail
 //Register User
 function registerUser() {
     event.preventDefault()
@@ -35,15 +34,17 @@ function registerUser() {
     .then(function(){
         console.log('Redirecting')
         window.location.href = "index.html"
+        alert(`Welcome ${email}. Redirecting to Book Search`)
     })
     .catch(function(error){
         const errorCode = error.code;
-        const errorMessage = error.message;
 
             if (errorCode === 'auth/invalid-email') {
                 alert('Invalid email format')
             } else if (errorCode === 'auth/email-already-in-use') {
                 alert('Email address already in use')
+            } else {
+                alert('Password must be at least 6 characters')
             }
     }) 
     console.log(email, password)
@@ -57,6 +58,8 @@ function signIn() {
         .then(function(){
             console.log('Redirecting')
             window.location.href = "index.html"
+            alert(`Welcome ${email}. Redirecting to Book Search`)
+            document.getElementById('sign-in').innerHTML = `Sign Out as ${user.email}`
         })
         .catch(function(error){
             const errorCode = error.code;
@@ -77,6 +80,22 @@ function signOut() {
 }
 //Update user state
 firebase.auth().onAuthStateChanged(function(user) {
+    let userEmail = user.email
     console.log(user)
+    console.log(`Logged in as ${user.email}`)
+    document.getElementById('sign-in').innerHTML = `Sign Out as ${user.email}`
+    document.getElementById('sign-out').onClick = signOut()
 })
-
+//Anonymous Bypass
+function anonymousRedirect() {
+    event.preventDefault()
+    window.location.href = 'index.html'
+}
+function userButtonHandler() {
+    if (userEmail !== (null || undefined)) {
+        document.getElementById('sign-in').innerHTML = `Sign Out as ${userEmail}`
+    } else {
+        document.getElementById('sign-in').innerHTML = 'Sign In'
+    }
+}
+userButtonHandler()

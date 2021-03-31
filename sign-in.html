@@ -11,13 +11,25 @@
 </head>
 
 <body>
-    
+    <nav class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link" href="index.html">Search</a>
+        <a class="nav-item nav-link" href="#">My Shelf</a>
+        <a class="nav-item nav-link" href="about.html">About</a>
+        <a class="nav-item nav-link" id="sign-in" href="sign-in.html">Sign In</a>
+    </nav>
+    <h1>Welcome to Bookshelf</h1>
+    <h2>A tool to keep track of your books</h2>
     <form>
+        <p id="sign-in-confirmation"></p>
         <input id="email" placeholder="Email" value="" type="text"></input>
         <input id="password" placeholder="Password" value="" type="password"></input>
         <button id="authButton" onClick="registerUser()">Register</button>
         <button id="authButton" onClick="signIn()">Sign In</button>
         <button id="authButton" onClick="signOut()">Sign Out</button>
+        <label id="anonymous-warning-label"> or </label>
+        <button class="nav-pills" id="bypass" onClick="anonymousRedirect()">Continue Anonymously</button>
+        <label id="anonymous-warning-label">User authentication is required to use perosnal bookshelf feature</label>
+
 
     </form>
 

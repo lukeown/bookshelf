@@ -9,6 +9,7 @@ body * {
     display: block;
 }
 body {
+    background-color: #97C3B9;
     width: 60%;
     margin: auto;
 }
@@ -22,15 +23,10 @@ body {
     border-radius: 8px;
     font-size: 1.7vw;
     background-color: white;
-    margin-top: 5vw;
+    margin-top: 1.7vw;
     padding: 10px;
     text-align: center;
 }
-input:-webkit-autofill {
-    color: #686868;
-    background-color: white;
-}
-
 #button {
     width: 20%;
     border: 2px solid #EF9F43;
@@ -43,6 +39,20 @@ input:-webkit-autofill {
 #button:hover {
     background-color: #E18114;
     border: 2px solid #E18114;
+}
+h1 {
+    color: white;
+    text-align: center;
+    padding-top: 1vw;
+    font-size: 3.5vw;
+}
+h2 {
+    color: #4d5c56;
+    text-align: center;
+    font-size: 2vw;
+}
+h3 {
+    color: #4d5c56;
 }
 h5 {
     font-family: 'Quicksand', sans-serif;
@@ -72,8 +82,13 @@ p {
     max-height: 200px;
     max-width: 160px;
 }
-
-
+.how-to {
+    padding-top: 2vw;
+    padding-bottom: 1vw;
+}
+.about {
+    width: 80%;
+}
 
 #email {
     width: 40%;
@@ -83,7 +98,7 @@ p {
     font-size: 1.7vw;
     background-color: white;
     padding: 10px;
-    margin-top: 4vw;
+    margin-top: 3vw;
     margin-bottom: 2vw;
     text-align: center;
 }
@@ -101,15 +116,43 @@ p {
     width: 20%;
     border: 2px solid #EF9F43;
     border-radius: 5px;
-    font-size: 1.3vw;
+    font-size: 1.1vw;
     color: white;
     background-color: #EF9F43;
-    padding: 6px;
-    margin-top: 1vw;;
+    padding: 0;
+    margin-top: 1vw;
 }
 #authButton:hover {
     background-color: #E18114;
     border: 2px solid #E18114;
+}
+#bypass {
+    width: 20%;
+    border: 2px solid #EF9F43;
+    border-radius: 5px;
+    font-size: 1.1vw;
+    color: white;
+    background-color: #EF9F43;
+    padding: 0;
+}
+#bypass:hover {
+    background-color: #E18114;
+    border: 2px solid #E18114;}
+.nav {
+    background-color: #97C3B9;
+    padding: 1vw;
+}
+.nav-link {
+    color: white;
+}
+.nav-link:hover {
+    color: #00ffc3;
+}
+#anonymous-warning-label {
+    color: #686868;
+    font-size: 1vw;
+    text-align: center;
+    padding: .8vw;
 }
 
 /* ----== MEDIA QUERIES ==---- */
