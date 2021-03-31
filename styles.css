@@ -3,7 +3,8 @@
     font-family: 'Quicksand'
 }
 body * {
-    
+    background-color: #97C3B9;
+
     margin: auto;
     display: block;
 }
@@ -53,6 +54,12 @@ p {
     font-size: 1vw;
     color: white;
 }
+#card-body {
+    width: 80%;
+}
+#card-shell {
+    width: 90%;
+}
 #card-image {
     margin: auto;
     padding: 20px;
@@ -71,6 +78,8 @@ p {
 @media screen and (orientation: portrait) {
     body {
         width: 100%;
+        background-color: #97C3B9;
+
     }
     .input {
         width: 90%;
@@ -81,14 +90,46 @@ p {
     #button {
         width: 90%;
         font-size: 5vw;
+        margin-bottom: 3vw;
     }
     h5 {
         font-size: 5vw;
     }
     #searchConfirm {
         font-size: 4vw;
+        margin-bottom: 3vw;
     }
     p {
         font-size: 3.5vw;
+    }
+    .bookCover {
+        max-height: 35vw;
+        max-width: 20vw;
+    }
+    #card-body {
+        width: 100%;
+    }
+}
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+    body {
+        width: 100%;
+        background-color: #97C3B9;
+    }
+    .input {
+        width: 80%;
+        font-size: 4vw;
+    }
+    #button {
+        width: 80%;
+        font-size: 3vw;
+    }
+    #searchConfirm {
+        font-size: 2.5vw;
+    }
+    h5 {
+        font-size: 4vw;
+    }
+    p {
+        font-size: 3vw
     }
 }

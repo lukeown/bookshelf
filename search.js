@@ -64,7 +64,7 @@ function generateCard(bookList) {
     //for every book, make a card and fill in the info
         document.getElementById('card').innerHTML += // fill in card structure and content
         `
-            <div class="card mb-3" id="card-shell" style="max-width: 600px;">
+            <div class="card mb-3" id="card-shell">
                 <div class="row g-0" id="card-item">
                     <div class="col-md-4" id="card-image">
                         <img src='${bookList[i].cover}' id='${i}' class='bookCover' onload='getImageSize(${i})'/>
