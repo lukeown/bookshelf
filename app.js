@@ -21,6 +21,28 @@ const firebaseConfig = {
     appId: "1:936112938208:web:078603093fb8e1eb0fc485"
 };
 firebase.initializeApp(firebaseConfig);
+firebase.database();
+
+const bookshelfFirebase = firebase.database().ref('Users');
+var newShelf = bookshelfFirebase;
+
+// Shelf is created on user creation
+function addShelf(userEmail) {
+    console.log(userEmail)
+    newShelf.push({userEmail})
+}
+
+var myShelf = firebase.database().ref(`Users/`)
+let book
+// Users can add books to personal shelf
+function addToShelf(book) {
+    console.log(book)
+    myShelf.push({
+
+        "title": book.title,
+        "author": book.author
+    })
+}
 
 let userEmail
 //Register User
@@ -32,6 +54,7 @@ function registerUser() {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function(){
+        addShelf(email)
         console.log('Redirecting')
         window.location.href = "index.html"
         alert(`Welcome ${email}. Redirecting to Book Search`)
@@ -80,7 +103,7 @@ function signOut() {
 }
 //Update user state
 firebase.auth().onAuthStateChanged(function(user) {
-    let userEmail = user.email
+    userEmail = user.email
     console.log(user)
     console.log(`Logged in as ${user.email}`)
     document.getElementById('sign-in').innerHTML = `Sign Out as ${user.email}`

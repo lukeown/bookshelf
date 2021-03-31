@@ -50,6 +50,8 @@ async function searchBooks() {
 
     for (let i = 0; i < 5; i++) { // Pushes the first 5 search results to the bookResult array
         bookResult.push({cover: bookCover[i], title: book.docs[i].title, author: book.docs[i].author_name, date: book.docs[i].first_publish_year, isbn: book.docs[i].isbn[0]})
+        bookList.push({cover: bookCover[i], title: book.docs[i].title, author: book.docs[i].author_name, date: book.docs[i].first_publish_year, isbn: book.docs[i].isbn[0]})
+
     }
     document.getElementById('searchConfirm').innerHTML = `Showing results for: ${userInput}`
     generateCard(bookResult)
@@ -59,7 +61,7 @@ async function searchBooks() {
 // also creates an img element within the 'card' div, using the url stored bookResult.cover, which is then passed into the generateCard function as bookList.cover
 // then checks that the book cover image is valid (over 1x1px) - if not, replaces with a placeholder (defaultCover)
 const defaultCover = './placeholder-image.png'
-
+let bookList = []
 function generateCard(bookList) { 
     for (let i = 0; i < bookList.length; i++) { 
     //for every book, make a card and fill in the info
@@ -77,12 +79,19 @@ function generateCard(bookList) {
                             <p>${bookList[i].date}</p>
                             <p>ISBN: ${bookList[i].isbn}</p>
                             <br>
+                            <button onClick=pickBooks(${i})>Add book</button>
                         </div>
                     </div>
                 </div>
-            </div>    `
+            </div>    
+        `
     }
 }
+function pickBooks(addedBook) {
+    console.dir(bookList[addedBook])
+    addToShelf(bookList[addedBook])
+}
+
 let badImage
 function getImageSize(index) { // returns image height
     imageHeight = document.getElementsByTagName('img')[index].height
