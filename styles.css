@@ -63,6 +63,7 @@ p {
 }
 .bookCover {
     max-height: 200px;
+    max-width: 160px;
 }
 
 /* ----== MEDIA QUERIES ==---- */

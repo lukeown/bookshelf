@@ -57,7 +57,7 @@ async function searchBooks() {
 // generateCard function takes the books array and throws the information to render into the card div
 // also creates an img element within the 'card' div, using the url stored bookResult.cover, which is then passed into the generateCard function as bookList.cover
 // then checks that the book cover image is valid (over 1x1px) - if not, replaces with a placeholder (defaultCover)
-const defaultCover = 'https://www.claws.in/static/book-cover-placeholder-e1563706855534.jpg'
+const defaultCover = './placeholder-image.png'
 
 function generateCard(bookList) { 
     for (let i = 0; i < bookList.length; i++) { 
