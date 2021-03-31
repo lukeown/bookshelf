@@ -13,9 +13,8 @@ body {
     width: 60%;
     margin: auto;
 }
-#card {
-    padding-top: 2vw;
-}
+
+/* Standard Styles */
 .input {
     width: 40%;
     color: #686868;
@@ -36,10 +35,25 @@ body {
     background-color: #EF9F43;
     padding: 8px;
 }
-#button:hover {
-    background-color: #E18114;
-    border: 2px solid #E18114;
+#searchConfirm {
+    text-align: center;
 }
+.bookCover {
+    max-height: 200px;
+    max-width: 160px;
+}
+.how-to {
+    padding-top: 2vw;
+    padding-bottom: 1vw;
+}
+.about {
+    width: 80%;
+}
+.banner {
+    color: #ffcea6;
+}
+
+/* Typography */
 h1 {
     color: white;
     text-align: center;
@@ -64,32 +78,17 @@ p {
     font-size: 1vw;
     color: white;
 }
-#card-body {
-    width: 80%;
+
+/* Nav Bar */
+.nav {
+    background-color: #97C3B9;
+    padding: 1vw;
 }
-#card-shell {
-    width: 90%;
-}
-#card-image {
-    margin: auto;
-    padding: 20px;
+.nav-link {
+    color: white;
 }
 
-#searchConfirm {
-    text-align: center;
-}
-.bookCover {
-    max-height: 200px;
-    max-width: 160px;
-}
-.how-to {
-    padding-top: 2vw;
-    padding-bottom: 1vw;
-}
-.about {
-    width: 80%;
-}
-
+/* User Authentication */
 #email {
     width: 40%;
     color: #686868;
@@ -122,10 +121,6 @@ p {
     padding: 0;
     margin-top: 1vw;
 }
-#authButton:hover {
-    background-color: #E18114;
-    border: 2px solid #E18114;
-}
 #bypass {
     width: 20%;
     border: 2px solid #EF9F43;
@@ -135,24 +130,44 @@ p {
     background-color: #EF9F43;
     padding: 0;
 }
-#bypass:hover {
-    background-color: #E18114;
-    border: 2px solid #E18114;}
-.nav {
-    background-color: #97C3B9;
-    padding: 1vw;
-}
-.nav-link {
-    color: white;
-}
-.nav-link:hover {
-    color: #00ffc3;
-}
 #anonymous-warning-label {
     color: #686868;
     font-size: 1vw;
     text-align: center;
     padding: .8vw;
+}
+
+/* Card Styles */
+#card {
+    padding-top: 2vw;
+}
+#card-body {
+    width: 80%;
+}
+#card-shell {
+    width: 90%;
+}
+#card-image {
+    margin: auto;
+    padding: 20px;
+}
+/* Hovers */
+#button:hover {
+    background-color: #E18114;
+    border: 2px solid #E18114;
+}
+
+#authButton:hover {
+    background-color: #E18114;
+    border: 2px solid #E18114;
+}
+#bypass:hover {
+    background-color: #E18114;
+    border:
+    2px solid #E18114;
+}
+.nav-link:hover {
+    color: #00ffc3;
 }
 
 /* ----== MEDIA QUERIES ==---- */
@@ -174,6 +189,16 @@ p {
         font-size: 5vw;
         margin-bottom: 3vw;
     }
+    h1 {
+        padding: 5vw;
+        font-size: 5vw;
+    }
+    h2 {
+        font-size: 3.5vw;
+    }
+    h3 {
+        font-size: 4vw;
+    }
     h5 {
         font-size: 5vw;
     }
@@ -190,6 +215,45 @@ p {
     }
     #card-body {
         width: 100%;
+    }
+    .how-to {
+        padding-top: 5vw;
+    }
+    .nav-link {
+        font-size: 3.7vw;
+    }
+    .banner {
+        font-size: 10vw;
+        padding-bottom: 1vw;
+    }
+    /* User Authentication */
+    #email {
+        width: 80%;
+        font-size: 5vw;
+        padding: 10px;
+        margin-top: 3vw;
+        margin-bottom: 2vw;
+    }
+    #password {
+        width: 80%;
+        font-size: 5vw;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+    #authButton {
+        width: 60%;
+        font-size: 4vw;
+        padding: 7px;
+        margin-top: 15px;
+    }
+    #bypass {
+        width: 60%;
+        font-size: 4vw;
+        padding: 7px;
+    }
+    #anonymous-warning-label {
+        font-size: 3vw;
+        padding: .8vw;
     }
 }
 @media screen and (orientation: landscape) and (max-width: 1000px) {
@@ -213,5 +277,46 @@ p {
     }
     p {
         font-size: 3vw
+    }
+
+    .nav-link {
+        font-size: 3vw;
+    }
+
+    /* User Authentication */
+    #email {
+        width: 80%;
+        font-size: 3vw;
+        padding: 10px;
+        margin-top: 3vw;
+        margin-bottom: 2vw;
+    }
+    #password {
+        width: 80%;
+        font-size: 3vw;
+        padding: 10px;
+        margin-bottom: 30px;
+    }
+    #authButtonGroup {
+        margin: auto;
+        width: 60%;
+        display: flex;
+    }
+    #authButton {
+        justify-content: center;
+        display: inline-flex;
+        width: 20%;
+        font-size: 2vw;
+        padding: 7px;
+        margin: auto;
+    }
+    #bypass {
+        width: 40%;
+        font-size: 2vw;
+        padding: 7px;
+    }
+    #anonymous-warning-label {
+        font-size: 3vw;
+        padding: .8vw;
     }
 }

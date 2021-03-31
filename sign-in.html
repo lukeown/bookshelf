@@ -23,9 +23,11 @@
         <p id="sign-in-confirmation"></p>
         <input id="email" placeholder="Email" value="" type="text"></input>
         <input id="password" placeholder="Password" value="" type="password"></input>
-        <button id="authButton" onClick="registerUser()">Register</button>
-        <button id="authButton" onClick="signIn()">Sign In</button>
-        <button id="authButton" onClick="signOut()">Sign Out</button>
+        <div id="authButtonGroup">
+            <button id="authButton" onClick="registerUser()">Register</button>
+            <button id="authButton" onClick="signIn()">Sign In</button>
+            <button id="authButton" onClick="signOut()">Sign Out</button>
+        </div>    
         <label id="anonymous-warning-label"> or </label>
         <button class="nav-pills" id="bypass" onClick="anonymousRedirect()">Continue Anonymously</button>
         <label id="anonymous-warning-label">User authentication is required to use perosnal bookshelf feature</label>
