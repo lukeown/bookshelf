@@ -22,6 +22,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+
+let user
 //Register User
 function registerUser() {
     event.preventDefault()
@@ -29,7 +31,21 @@ function registerUser() {
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
 
-    firebase.auth().createUserWithEmailAndPassword(email, password) 
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+    .then(function(){
+        console.log('Redirecting')
+        window.location.href = "index.html"
+    })
+    .catch(function(error){
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+            if (errorCode === 'auth/invalid-email') {
+                alert('Invalid email format')
+            } else if (errorCode === 'auth/email-already-in-use') {
+                alert('Email address already in use')
+            }
+    }) 
     console.log(email, password)
 }
 //Sign In
@@ -37,12 +53,25 @@ function signIn() {
     event.preventDefault()
     let email = document.getElementById('email').value
     let password = document.getElementById('password').value
-    firebase.auth().signInWithEmailAndPassword(email, password) 
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(){
+            console.log('Redirecting')
+            window.location.href = "index.html"
+        })
+        .catch(function(error){
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+                if (errorCode === 'auth/user-not-found') {
+                    alert('User not found')
+                } else if (errorCode === 'auth/wrong-password') {
+                    alert('Wrong password')
+                }
+        })
     console.log(email, password)
 }
 //Sign Out
 function signOut() {
-    event.preventDefault()
     firebase.auth().signOut();
 
 }
@@ -50,3 +79,4 @@ function signOut() {
 firebase.auth().onAuthStateChanged(function(user) {
     console.log(user)
 })
+
