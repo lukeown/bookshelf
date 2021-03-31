@@ -73,6 +73,45 @@ p {
     max-width: 160px;
 }
 
+
+
+#email {
+    width: 40%;
+    color: #686868;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 1.7vw;
+    background-color: white;
+    padding: 10px;
+    margin-top: 4vw;
+    margin-bottom: 2vw;
+    text-align: center;
+}
+#password {
+    width: 40%;
+    color: #686868;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 1.7vw;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+}
+#authButton {
+    width: 20%;
+    border: 2px solid #EF9F43;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    color: white;
+    background-color: #EF9F43;
+    padding: 6px;
+    margin-top: 1vw;;
+}
+#authButton:hover {
+    background-color: #E18114;
+    border: 2px solid #E18114;
+}
+
 /* ----== MEDIA QUERIES ==---- */
 
 @media screen and (orientation: portrait) {
