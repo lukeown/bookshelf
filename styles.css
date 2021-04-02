@@ -77,6 +77,15 @@ body {
 .banner:hover {
     color: #EF9F43;
 }
+#addBook {
+    width: 30%;
+    border: 2px solid #EF9F43;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    color: white;
+    background-color: #EF9F43;
+    padding: 8px;
+}
 
 
 /* Typography */
@@ -250,7 +259,14 @@ p {
     }
     .banner {
         font-size: 10vw;
-        padding-bottom: 1vw;
+        padding: 2vw;
+    }
+    .getBooks {
+        width: 60%;
+        border-radius: 5px;
+        font-size: 3vw;
+        padding: 8px;
+        margin-top: 1vw;
     }
     /* User Authentication */
     #email {
@@ -281,6 +297,15 @@ p {
         font-size: 3vw;
         padding: .8vw;
     }
+    #addBook {
+        width: 30%;
+        border: 2px solid #EF9F43;
+        border-radius: 5px;
+        font-size: 3vw;
+        color: white;
+        background-color: #EF9F43;
+        padding: 8px;
+    }
 }
 @media screen and (orientation: landscape) and (max-width: 1000px) {
     body {
@@ -307,6 +332,26 @@ p {
 
     .nav-link {
         font-size: 3vw;
+    }
+    .getBooks {
+        width: 60%;
+        border-radius: 5px;
+        font-size: 3vw;
+        padding: 8px;
+        margin-top: 1vw;
+    }
+    .banner {
+        font-size: 5vw;
+    }
+
+    #addBook {
+        width: 30%;
+        border: 2px solid #EF9F43;
+        border-radius: 5px;
+        font-size: 2vw;
+        color: white;
+        background-color: #EF9F43;
+        padding: 8px;
     }
 
     /* User Authentication */

@@ -1,22 +1,8 @@
-// ---== TO DO ==---
-//
-// [DONE] USER AUTHENTICATION VIA FIREBASE
-// [DONE] MEDIA QUERIES
-// [DONE] NAV BAR
-// [] DATES ISSUE
-// [DONE] PERSONAL BOOKSHELVES
-// [] PERSONAL READING STATS
-// [DONE] ABOUT PAGE
-// [DONE] IMAGE PROBLEM (PLACEHOLDER)
-// [] SPEED UP XHR REQUEST?
-
-
-
-// App needs to let users:
+// Site needs to let users:
 // - search books
 // - view book results returned from the search
 // - add books to their own bookshelf -- figure out how to return books first
-// ---- books will be saved to personal bookshelves (firebase user authentication)
+// ---- books will be saved to personal bookshelves (firebase user authentication and firestore)
 
 // Search 
 // - user submits input form
@@ -36,10 +22,6 @@ async function searchBooks() {
     const response =  await fetch(`https://openlibrary.org/search.json?title=${userInput}`)
     let book = await response.json()
     console.log(book)
-
-    //BOOK COVER API REQUEST
-    //WORKS RIGHT NOW BUT A LOT OF BOOKS DON'T HAVE COVERS
-    //need to check if the book has a cover file, if not display a placeholder.
 
     let bookCoverRequest = []
     let bookCover= []
@@ -63,7 +45,7 @@ async function searchBooks() {
 const defaultCover = './placeholder-image.png'
 let bookList = []
 function generateCard(bookList) { 
-    
+
     document.getElementById('card').innerHTML = '';
 
     for (let i = 0; i < bookList.length; i++) { 
@@ -82,7 +64,7 @@ function generateCard(bookList) {
                             <p>${bookList[i].date}</p>
                             <p>ISBN: ${bookList[i].isbn}</p>
                             <br>
-                            <button onClick=pickBooks(${i})>Add book</button>
+                            <button id="addBook" onClick=pickBooks(${i})>Add book</button>
                         </div>
                     </div>
                 </div>
@@ -96,7 +78,7 @@ function pickBooks(addedBook) {
 }
 
 let badImage
-function getImageSize(index) { // returns image height
+function getImageSize(index) { // returns image height as validation
     imageHeight = document.getElementsByTagName('img')[index].height
     if (imageHeight <= 1) {
         console.log(`bad image at ${index}`)
@@ -118,7 +100,3 @@ function clear() {
     document.getElementById('card').innerHTML = ''
 }
 
-
-//current issues with site
-//some books have dates that aren't eligble (not 4 digits) - instead of relying on first_publish_year, find the lowest eligible value in the publish_year array
-//some books don't have book cover - fix by setting placeholder image and using that if selected image isn't valid
