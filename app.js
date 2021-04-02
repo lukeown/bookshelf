@@ -1,16 +1,18 @@
 // ---== TO DO ==---
 //
 // [DONE] USER AUTHENTICATION VIA FIREBASE
-// [] MEDIA QUERIES
-// [] NAV BAR
+// [DONE] MEDIA QUERIES
+// [DONE] NAV BAR
 // [] DATES ISSUE
-// [] PERSONAL BOOKSHELVES
+// [DONE] PERSONAL BOOKSHELVES
 // [] PERSONAL READING STATS
-// [] ABOUT PAGE
-// [] IMAGE PROBLEM (PLACEHOLDER)
+// [DONE] ABOUT PAGE
+// [DONE] IMAGE PROBLEM (PLACEHOLDER)
 // [] SPEED UP XHR REQUEST?
+// [] FIX SHELF ISSUE
+// [] READ SHELF
 
-// FIREBASE CONFIG & INITIALIZATION
+
 const firebaseConfig = {
     apiKey: "AIzaSyDmFQRHyrkl3nmQfXinWKE7ulL23l-2fH0",
     authDomain: "bookshelf-e44a7.firebaseapp.com",
@@ -21,30 +23,62 @@ const firebaseConfig = {
     appId: "1:936112938208:web:078603093fb8e1eb0fc485"
 };
 firebase.initializeApp(firebaseConfig);
-firebase.database();
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
 
-const bookshelfFirebase = firebase.database().ref('Users');
-var newShelf = bookshelfFirebase;
-
-// Shelf is created on user creation
-function addShelf(userEmail) {
-    console.log(userEmail)
-    newShelf.push({userEmail})
-}
-
-var myShelf = firebase.database().ref(`Users/`)
 let book
-// Users can add books to personal shelf
-function addToShelf(book) {
-    console.log(book)
-    myShelf.push({
 
-        "title": book.title,
-        "author": book.author
+
+function addBook(book) {
+    db.collection('relations').add({
+        email: userEmail,
+        bookCover: book.cover,
+        bookTitle: book.title,
+        bookAuthor: book.author,
+        bookDate: book.date
+    })
+    .then(() => {
+        console.log(`Book ${book.title} saved to collection!`)
+    })
+    .catch((error) => {
+        console.error('Error writing to Firestore: ', error)
     })
 }
 
-let userEmail
+function myBooks() {
+    document.getElementById('card').innerHTML = '';
+
+    let userEmail = document.getElementById('shelfEmail').value
+    db.collection('relations').where('email', '==', userEmail)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                document.getElementById('card').innerHTML += // fill in card structure and content
+                    `
+                        <div class="card mb-3" id="card-shell">
+                            <div class="row g-0" id="card-item">
+                                <div class="col-md-4" id="card-image">
+                                    <img src='${(doc.id, " => ", doc.data()).bookCover}' class='bookCover'/>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body" id="card-body">
+                                        <h5>${(doc.id, " => ", doc.data()).bookTitle}</h5> 
+                                        <p>${(doc.id, " => ", doc.data()).bookAuthor}</p>
+                                        <p>${(doc.id, " => ", doc.data()).bookDate}</p>  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    `
+            })
+        })
+        .catch((error) => {
+            console.error('Error reading from Firestore: ', error)
+        })
+}
+
+
+
 //Register User
 function registerUser() {
     event.preventDefault()
@@ -54,10 +88,8 @@ function registerUser() {
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function(){
-        addShelf(email)
         console.log('Redirecting')
         window.location.href = "index.html"
-        alert(`Welcome ${email}. Redirecting to Book Search`)
     })
     .catch(function(error){
         const errorCode = error.code;
@@ -108,11 +140,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     console.log(`Logged in as ${user.email}`)
     document.getElementById('sign-in').innerHTML = `Sign Out as ${user.email}`
     document.getElementById('sign-out').onClick = signOut()
+    return userEmail
 })
 //Anonymous Bypass
 function anonymousRedirect() {
     event.preventDefault()
-    window.location.href = 'index.html'
+    window.location.href = 'myShelf.html'
 }
 function userButtonHandler() {
     if (userEmail !== (null || undefined)) {
@@ -122,3 +155,35 @@ function userButtonHandler() {
     }
 }
 userButtonHandler()
+
+
+// OLD FIREBASE REAL TIME DATABASE CODE
+
+// firebase.database();
+
+// const bookshelfFirebaseReference = firebase.database().ref('relations');
+// var newShelf = bookshelfFirebaseReference;
+
+// // Shelf is created on user creation
+// function addShelf(userEmail) {
+//     console.log(userEmail)
+//     newShelf.child('email').push(userEmail.valueOf())// makes shelf with path: Users/userEmail/randomkey:userEmail
+//     newShelf.push('book')
+//     // newShelf.child(userEmail).set(userEmail)
+// }
+
+// var myShelf = firebase.database().ref()
+// let book
+// // Users can add books to personal shelf
+// function addToShelf(book, userEmail) {
+//     console.log(book)
+//     console.log(userEmail)
+//     // myShelf.child('user').child('email').push(book)
+//     newShelf.child('book').push(book)
+
+//     // {
+
+//     //     "title": book.title,
+//     //     "author": book.author
+//     // })
+// }

@@ -26,6 +26,16 @@ body {
     padding: 10px;
     text-align: center;
 }
+.getBooks {
+    width: 30%;
+    border: 2px solid #EF9F43;
+    border-radius: 5px;
+    font-size: 1.3vw;
+    color: white;
+    background-color: #EF9F43;
+    padding: 8px;
+    margin-top: 1vw;
+}
 #button {
     width: 20%;
     border: 2px solid #EF9F43;
@@ -43,15 +53,31 @@ body {
     max-width: 160px;
 }
 .how-to {
-    padding-top: 2vw;
-    padding-bottom: 1vw;
+    text-align: center;
+    color: white;
+    text-shadow: #686868;
+    padding-top: 3vw;
+    padding-bottom: 2vw;
 }
 .about {
     width: 80%;
 }
 .banner {
-    color: #ffcea6;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    margin-bottom: 1vw;
+    padding: 0;
+    font-size: 3.5vw;
+    line-height: 3.5vw;
+    text-decoration: none;
 }
+.banner:hover {
+    color: #EF9F43;
+}
+
 
 /* Typography */
 h1 {

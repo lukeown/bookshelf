@@ -16,17 +16,17 @@
         <a class="nav-item nav-link" href="about.html">About</a>
         <a class="nav-item nav-link" id="sign-in" href="sign-in.html">Sign In</a>
     </nav>
-    <div class="about">
-        <a class="banner" href="sign-in.html">Bookshelf</a>
-        <h2>A tool to lookup and keep track of your books</h2>
-        <h3 class="how-to">How to use Bookshelf</h3>
-        <p>Sign up or continue anonymously (if you want to use the bookshelf feature you'll need an account)</p>
-        <br>
-        <p>Search books - if your search doesn't return results, try refreshing and check your spelling </p>
-        <br>
-        <p>Add books you're interested in to your personal shelf</p>
-        <br>
-        <p>View your personal bookshelf and marvel over your fantastic book taste :-)</p>
-    </div>
+    <input class="input" id="shelfEmail" placeholder="Enter your email address"></input>
+    <button class="getBooks" onClick="myBooks()">Get My Book Collection</button>
+    <div id="card"></div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
+    <script src="search.js" async defer></script>
+    <script src="app.js" async defer></script>
+    <script src="myShelf.js" async defer></script>
+
+
 </body>
 </html>

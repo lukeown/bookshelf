@@ -13,7 +13,7 @@
 <body>
     <nav class="nav nav-pills nav-justified">
         <a class="nav-item nav-link" href="index.html">Search</a>
-        <a class="nav-item nav-link" href="#">My Shelf</a>
+        <a class="nav-item nav-link" href="myShelf.html">My Shelf</a>
         <a class="nav-item nav-link" href="about.html">About</a>
         <a class="nav-item nav-link" id="sign-in" href="sign-in.html">Sign In</a>
     </nav>
@@ -31,16 +31,12 @@
         <label id="anonymous-warning-label"> or </label>
         <button class="nav-pills" id="bypass" onClick="anonymousRedirect()">Continue Anonymously</button>
         <label id="anonymous-warning-label">User authentication is required to use perosnal bookshelf feature</label>
-
-
     </form>
 
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
     <script src="search.js"></script>
     <script src="app.js" async defer></script>
-
-
 </body>
 </html>

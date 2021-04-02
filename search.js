@@ -1,14 +1,14 @@
 // ---== TO DO ==---
 //
 // [DONE] USER AUTHENTICATION VIA FIREBASE
-// [] MEDIA QUERIES
-// [] NAV BAR
+// [DONE] MEDIA QUERIES
+// [DONE] NAV BAR
 // [] DATES ISSUE
-// [] PERSONAL BOOKSHELVES
+// [DONE] PERSONAL BOOKSHELVES
 // [] PERSONAL READING STATS
-// [] ABOUT PAGE
-// [] IMAGE PROBLEM (PLACEHOLDER)
-// [] SPEED UP FETCH REQUEST?
+// [DONE] ABOUT PAGE
+// [DONE] IMAGE PROBLEM (PLACEHOLDER)
+// [] SPEED UP XHR REQUEST?
 
 
 
@@ -63,6 +63,9 @@ async function searchBooks() {
 const defaultCover = './placeholder-image.png'
 let bookList = []
 function generateCard(bookList) { 
+    
+    document.getElementById('card').innerHTML = '';
+
     for (let i = 0; i < bookList.length; i++) { 
     //for every book, make a card and fill in the info
         document.getElementById('card').innerHTML += // fill in card structure and content
@@ -89,7 +92,7 @@ function generateCard(bookList) {
 }
 function pickBooks(addedBook) {
     console.dir(bookList[addedBook])
-    addToShelf(bookList[addedBook])
+    addBook(bookList[addedBook])
 }
 
 let badImage
@@ -101,6 +104,7 @@ function getImageSize(index) { // returns image height
             badImage = document.getElementById(index)
             console.log(badImage.src)
             badImage.src = defaultCover
+            bookList[index].cover = defaultCover
         }
         changeImage(index)
     }
